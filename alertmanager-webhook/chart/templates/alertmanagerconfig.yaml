@@ -1,0 +1,30 @@
+{{- if .Values.alertmanagerConfigs.create }}
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: AlertmanagerConfig
+metadata:
+  name: hawkeye-webhook-alerts
+  namespace: {{ .Release.Namespace }}
+  labels:
+    alertmanagerConfig: hawkeye-webhook-alerts
+spec:
+  route:
+    receiver: "hawkeye-webhook-receiver"
+    matchers:
+      - name: namespace
+        matchType: "=~"
+        value: "jani-.*"
+      - name: scenario
+        matchType: "="
+        value: "failure"
+    groupBy:
+      - namespace
+      - alertname
+    groupWait: 30s
+    groupInterval: 5m
+    repeatInterval: 4h
+  receivers:
+    - name: "hawkeye-webhook-receiver"
+      webhookConfigs:
+        - url: http://hawkeye-alerts-webook/alert
+          sendResolved: false
+{{- end }}

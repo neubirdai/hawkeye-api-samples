@@ -1,0 +1,24 @@
+# Replica count for webhook
+replicaCount: 1
+
+# Webhook image details
+image:
+  repository: dummy-image
+  tag: dummy-tag
+  pullPolicy: Always
+
+# Webhook service details
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8000
+
+# Hawkeye details
+hawkeyeUser: ""
+hawkeyePassword: ""
+hawkeyeURL: ""
+hawkeyeProject: ""
+
+# Whether to create AlertmanagerConfig CRD ot not
+alertmanagerConfigs:
+  create: false

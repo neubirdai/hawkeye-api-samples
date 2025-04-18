@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hawkeye-alerts-webook
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: webhook
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: webhook
+  template:
+    metadata:
+      labels:
+        app: webhook
+    spec:
+      containers:
+        - name: webhook
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: 8000
+          env:
+          - name: HAWKEYE_USER
+            value: {{ .Values.hawkeyeUser }}
+          - name: HAWKEYE_PASSWORD
+            value: {{ .Values.hawkeyePassword }}
+          - name: HAWKEYE_URL
+            value: {{ .Values.hawkeyeURL }}
+          - name: HAWKEYE_PROJECT
+            value: {{ .Values.hawkeyeProject }}
