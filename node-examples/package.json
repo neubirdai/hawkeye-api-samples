@@ -1,0 +1,38 @@
+{
+  "name": "hawkeye-api-docs",
+  "version": "1.0.0",
+  "description": "Documentation and testing utilities for the Hawkeye API",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint src test examples",
+    "format": "prettier --write '**/*.{js,json,md}'",
+    "docs:serve": "docsify serve docs",
+    "examples:projects": "node examples/list-projects.js",
+    "examples:connections": "node examples/create-connection.js",
+    "examples:sessions": "node examples/manage-sessions.js",
+    "examples:analysis": "node examples/evaluate-analysis.js"
+  },
+  "keywords": [
+    "hawkeye",
+    "api",
+    "documentation",
+    "neubird"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.2",
+    "dotenv": "^16.3.1",
+    "readline-sync": "^1.4.10"
+  },
+  "devDependencies": {
+    "docsify-cli": "^4.4.4",
+    "eslint": "^8.55.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-jest": "^27.6.0",
+    "jest": "^29.7.0",
+    "nock": "^13.4.0",
+    "prettier": "^3.1.0"
+  }
+}
