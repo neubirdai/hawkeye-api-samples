@@ -1,6 +1,6 @@
 # Hawkeye API Node.js Examples
 
-This directory contains Node.js examples demonstrating how to interact with the Hawkeye API. The project includes a utils folder which contains some API wrapper utility functions to make the samples easier to understand and work with. 
+This directory contains Node.js examples demonstrating how to interact with the Hawkeye REST API. The project includes a utils folder which contains some API wrapper utility functions to make the samples easier to understand and work with. 
 
 
 ## Setup
